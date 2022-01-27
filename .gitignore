@@ -1,0 +1,11 @@
+*/target/
+/objectmacro-plugin/target/
+/plugin-user-test/target/
+/plugin-user-test/${gensource.dir}/objectmacro/
+
+/objectmacro-plugin-user-test/target/
+/objectmacro-plugin-user-test/nbactions.xml
+
+# ignore all IDE-Configuration
+nb-configuration.xml
+.idea

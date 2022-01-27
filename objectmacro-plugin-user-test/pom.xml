@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.htwsaar.mc</groupId>
+	<artifactId>objectmacro-plugin-user-test</artifactId>
+	<version>3.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>objectmacro-plugin-user-test</name>
+	
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<gensource.dir>${basedir}/target/generated-sources</gensource.dir>
+	
+		<!--maven variable which points to your local repository -->
+		<internal.repo.path>file:///home/hbui/mvn-repo/</internal.repo.path>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>        
+	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Internal Repository</name>
+			<url>${internal.repo.path}</url>
+		</repository>
+	</distributionManagement>	
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>de.htwsaar.mc</groupId>
+				<artifactId>objectmacro-maven-plugin</artifactId>
+				<version>3.0.0-SNAPSHOT</version>
+				
+				<configuration>
+					<!-- by default code will be generated 
+						(the option -g)
+					-->
+					<generateCode>true</generateCode>
+					<!-- and the plugin uses the the option strict 
+						(the option -s  of objectmacro).
+					-->
+					<strict>true</strict>
+					<!-- All generated file will be saved in this folder  
+						(the option -d directory). 
+						
+						The default value is
+ 						${basedir}/target/generated-sources/objectmacro
+					-->
+					<!--directory>${gensource.dir}/objectmacro</directory-->
+					<!-- This is the destinate package for all template
+						(the option -p packagename).
+
+						The default value ist template.
+					-->
+					<packagename>de.htwsaarland.sql.imp.template</packagename>
+				</configuration>
+				<executions>
+					<execution>
+						<id>simple-scala-de.htwde-objectmacro</id>
+						<!-- ================================================== 
+							you can define particular options for each template
+							file if you need. These option override the options
+							defined above.
+						==================================================== -->
+						<configuration>
+							<template>src/main/resources/simple.objectmacro</template>
+							<language>scala</language>
+							<packagename>de.htwsaar</packagename>
+							<directory>${gensource.dir}/objectmacro</directory>
+						</configuration>
+						<!-- ===================================================
+							the plugin provides only one goal: objectmacro. This
+							goal is called in the generate-sources phase. 
+						=================================================== -->
+						<goals>
+							<goal>objectmacro</goal>
+						</goals>
+					</execution>
+					
+					<execution>
+						<id>notsosimple</id>
+						<configuration>
+							<template>notsosimple.objectmacro</template>
+						</configuration>
+						<goals>
+							<goal>objectmacro</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>sqltemplate</id>
+						<configuration>
+							<template>sqltemplate.objectmacro</template>
+							<packagename>de.htwsaar.hpb.sql</packagename>
+						</configuration>
+						<goals>
+							<goal>objectmacro</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>	  
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

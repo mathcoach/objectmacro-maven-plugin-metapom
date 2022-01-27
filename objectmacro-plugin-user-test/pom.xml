@@ -57,7 +57,7 @@
 
 						The default value ist template.
 					-->
-					<packagename>de.htwsaarland.sql.imp.template</packagename>
+					<packagename>de.htwsaar.sql.imp.template</packagename>
 				</configuration>
 				<executions>
 					<execution>

@@ -1,6 +1,5 @@
-
 package de.htwsaar.pluginusertest;
-import de.htwsaarland.sql.imp.template.MNotSoSimple;
+import de.htwsaar.sql.imp.template.MNotSoSimple;
 /**
  *
  * @author phucluoi

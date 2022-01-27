@@ -1,4 +1,4 @@
-package de.htwsaar.objectmacroplugin;
+package de.htwsaar.mc;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -92,4 +92,14 @@ public final class Argument {
 		return clone;
 	}
 	
+    /**
+     * returns String which represents arguments ob objectmacro, as if it is called
+     * from within a console.
+     * @return may  look like <code>-t java -d {/abslute/path/to/template/directory} -p {your.organisation.org} --generate-code --strict --informative {absolute/path/to/template.objectmacro} </code>
+     */
+    @Override
+    public String toString() {
+        return String.join(" ", argv);
+    }
+    
 }

@@ -15,7 +15,7 @@
 		<gensource.dir>${basedir}/target/generated-sources</gensource.dir>
 	
 		<!--maven variable which points to your local repository -->
-		<internal.repo.path>file:///home/hbui/mvn-repo/</internal.repo.path>
+		<internal.repo.path>file:///tmp/mvn-repo/</internal.repo.path>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>        
 	</properties>

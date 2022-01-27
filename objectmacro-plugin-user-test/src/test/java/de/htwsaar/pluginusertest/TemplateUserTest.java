@@ -1,6 +1,5 @@
 package de.htwsaar.pluginusertest;
 
-import de.htwsaar.pluginusertest.TemplateUser;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package de.htwsaar.objectmacroplugin;
+package de.htwsaar.mc;
 
 import java.io.File;
 import java.util.HashSet;
@@ -9,7 +9,6 @@ import org.apache.maven.project.MavenProjectHelper;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -68,7 +67,8 @@ public class ObjectMacroCaller extends AbstractMojo {
 	@Parameter(defaultValue = "${basedir}/src/test/objectmacro")
 	private String objectmacroTestDirPath;
 	
-	@Component
+	//@Component
+    @Parameter( defaultValue = "${mojoExecution}", readonly = true )
 	private MojoExecution execution;
 	
 	private final String fileSep = System.getProperty("file.separator");
@@ -92,8 +92,10 @@ public class ObjectMacroCaller extends AbstractMojo {
 		packageNameNoGo.add("%");
 		packageNameNoGo.add("$");
 		packageNameNoGo.add(" ");
+        packageNameNoGo.add("-");
 	}
 
+    @Override
 	public void execute() throws MojoFailureException {
 		try {
 			if (projectHelper == null) {
@@ -109,7 +111,7 @@ public class ObjectMacroCaller extends AbstractMojo {
 			if (argv != null) {
 				if (needCompile(argv.getFile(), argv.getDirectory(), argv.getPackagename())) {
 					getLog().info("Call ObjectMacro with argv:");
-					getLog().info(argv.getArgv().toString());
+					getLog().info(argv.toString());
 					ObjectMacro.compile(argv.getStringArgv());
 				} else {
 					getLog().info("No need to compile template " + argv.getFile());

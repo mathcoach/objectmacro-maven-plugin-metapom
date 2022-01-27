@@ -8,7 +8,7 @@
     
     <groupId>de.htwsaar.mc</groupId>
     <artifactId>objectmacro-maven-plugin-metapom</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <name>objectmacro-maven-plugin-metapom</name>
     <packaging>pom</packaging>
 

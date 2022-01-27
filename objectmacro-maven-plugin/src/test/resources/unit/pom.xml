@@ -4,7 +4,7 @@
 
 	<groupId>de.htwsaar.mc</groupId>
 	<artifactId>objectmacro-plugin-user-test</artifactId>
-	<version>3.0.1-SNAPSHOT</version>
+	<version>3.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>plugin-user-test</name>
@@ -19,7 +19,7 @@
 			<plugin>
 				<groupId>de.htwsaar.mc</groupId>
                 <artifactId>objectmacro-maven-plugin</artifactId>
-                <version>3.0.1-SNAPSHOT</version>
+                <version>3.0.1</version>
 				<configuration>
 					<generateCode>true</generateCode>
 					<strict>true</strict>

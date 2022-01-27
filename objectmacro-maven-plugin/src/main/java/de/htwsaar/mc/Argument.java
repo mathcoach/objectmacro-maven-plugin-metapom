@@ -94,8 +94,9 @@ public final class Argument {
 	
     /**
      * returns String which represents arguments ob objectmacro, as if it is called
-     * from within a console.
-     * @return may  look like <code>-t java -d {/abslute/path/to/template/directory} -p {your.organisation.org} --generate-code --strict --informative {absolute/path/to/template.objectmacro} </code>
+     * from within a console. Use this method only for debug!
+     * 
+     * @return may  look like <code>-t java -d {/abslute/path/to/output/directory} -p {your.organisation.org} --generate-code --strict --informative {absolute/path/to/template.objectmacro} </code>
      */
     @Override
     public String toString() {

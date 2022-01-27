@@ -17,10 +17,11 @@ import org.apache.maven.project.MavenProject;
 import org.sablecc.objectmacro.launcher.ObjectMacro;
 
 /**
- * Call ObjectMacro to generate Java fileName from ObjectMacro fileName.
+ * Call Objectmacro to generate Java from ObjectMacro template.
+ * This Plugin uses the Objectmacro-v1, which is distributed in 
+ * <a href="http://downloads.sourceforge.net/sablecc/sablecc-4-beta.4.zip">sablecc-4.beta-4.zip</a>.
  *
  * @author Hong Phuc Bui
- * @version 2.0-SNAPSHOT
  *
  * @phase generate-resources
  */
@@ -28,30 +29,83 @@ import org.sablecc.objectmacro.launcher.ObjectMacro;
 public class ObjectMacroCaller extends AbstractMojo {
 
 	/**
-	 * Output Type (Java, etc... depends on ObjectMacro)
+	 * Set the output language, like option <code>-t ${language}</code> of Objectmacro. 
+     * 
 	 */
 	@Parameter(defaultValue = "java")
 	private String language;
+    
+    /**
+     * In most case one does not have to use this option. 
+     * This option is like <code>-d ${directory}</code>, it
+     * sets the output directory, where generated files are written in. It is set
+     * automatically to <code>${project.basedir}/target/generated-sources/objectmacro/</code>
+     * or <code>${project.basedir}/target/generated-test-sources/objectmacro/</code>.
+     * 
+     */
 	@Parameter
 	private String directory;
+    
+    /**
+     * defines the package name of generated class, like option <code>-p ${packagename}</code>. 
+     * This value is, for example java, used in <code>package ${packagename};</code>
+     * 
+     */
 	@Parameter(defaultValue = "template")
 	private String packagename;
+    
 	/**
-	 * true => --generate-code, false => --no-code.
+     * sets if Objectmacro generates code or not, like <code>--generate-code</code>
+     * or <code>--no-code</code>.
+     * <ul>
+	 *      <li><code>true</code> => <code>--generate-code</code></li>
+     *      <li><code>false</code> => <code>--no-code</code></li>
+     * </ul>
 	 */
 	@Parameter(defaultValue = "true")
 	private boolean generateCode;
 	/**
 	 * true => strict false => lenient.
 	 */
+    
+    /**
+     * is like option <code>--strict</code> or <code>--lenient"</code>.
+     * 
+     * <ul>
+     *  <li><code>true</code> = <code>strict</code> </li>
+     *  <li><code>false</code> = <code>lenient</code></li>
+     * </ul>
+     */
 	@Parameter(defaultValue = "true")
-	private boolean strict;
+	private boolean strict;    
+    
+    
 	/**
-	 * informative => --informative quite => --quiet verbose => --verbose.
+     * set console log level of Objectmacro. It takes one of these values:
+     * 
+     * <ul>
+	 *      <li><code>informative</code> = <code>--informative</code></li>
+     *      <li><code>quite</code> = <code>--quiet</code> </li>
+     *      <li><code>verbose</code> = <code>--verbose</code></li>
+     * </ul>
 	 */
 	@Parameter(defaultValue = "informative")
 	private String informative;
 
+    /**
+     * file name of the template. Per default the template file should be placed
+     * in <code>${project.basedir}/src/{main|test}/objectmacro</code>, and this
+     * parameter is set only to the plain file name. This plugin will search
+     * the file in the default directory for objectmacro.
+     * If the filename contains a 
+     * file separator character, for example in <code>/</code> in linux, this 
+     * plugin will try to resolve the file name to a file. This may be interesting
+     * if the template file does not belong to the project.
+     * See also 
+     * <a href="#objectmacroDirPath">objectmacroDirPath</a> and
+     * <a href="#objectmacroTestDirPath">objectmacroTestDirPath</a>
+     * 
+     */
 	@Parameter(required = true)
 	private String template;
 
@@ -61,13 +115,19 @@ public class ObjectMacroCaller extends AbstractMojo {
 	@Parameter(defaultValue = "${project}")
 	private MavenProject project;
 
+    /**
+     * default directory to search template files in main code.
+     */
 	@Parameter(defaultValue = "${basedir}/src/main/objectmacro")
 	private String objectmacroDirPath;
 	
+    /**
+     * default directory to search template files in test code.
+     */
 	@Parameter(defaultValue = "${basedir}/src/test/objectmacro")
 	private String objectmacroTestDirPath;
 	
-	//@Component
+	
     @Parameter( defaultValue = "${mojoExecution}", readonly = true )
 	private MojoExecution execution;
 	
@@ -288,11 +348,7 @@ public class ObjectMacroCaller extends AbstractMojo {
 			if (destinateDir.isDirectory()) { // if the last part of package is already a director
 				long lastModiTemplate = templageFile.lastModified();
 				long lastModiOutputPackage = destinateDir.lastModified();
-				if (lastModiTemplate > lastModiOutputPackage) {
-					return true;
-				} else {
-					return false;
-				}
+                return lastModiTemplate > lastModiOutputPackage;
 			} else {// if the last part of the package is not a directory/not exist
 				return true;
 			}

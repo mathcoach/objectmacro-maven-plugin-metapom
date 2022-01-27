@@ -4,7 +4,7 @@
 
 	<groupId>de.htwsaar.mc</groupId>
 	<artifactId>objectmacro-maven-plugin</artifactId>
-	<version>3.0.0-SNAPSHOT</version>
+	<version>3.0.1-SNAPSHOT</version>
 	<description>
 		Plugin to generate source from objectmacro files
 	</description>

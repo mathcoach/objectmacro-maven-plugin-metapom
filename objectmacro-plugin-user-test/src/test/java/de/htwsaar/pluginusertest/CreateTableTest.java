@@ -24,4 +24,23 @@ public class CreateTableTest {
         assertThat(sqlCmd).isEqualToIgnoringWhitespace(expected);
     }
     
+    @Test
+    void createTableWithConstrains() {
+        String tbName = "fruit";
+        MCreateTable table = new MCreateTable(tbName);
+        table.newCreateColumn("id", "BIG INT");
+        table.newCreateColumn("origin", "VARCHAR").newNotNull();
+        table.newCreateColumn("best_before", "datetime").newNotNull();
+        table.newCreateColumn("charge", "BIG INT");
+        table.newConstraints("someconstrain").newPrimaryKey("id");
+        String result = table.toString();
+        String expected = "CREATE TABLE IF NOT EXISTS fruit (\n" +
+"        id BIG INT  ,\n" +
+"        origin VARCHAR  NOT NULL  ,\n" +
+"        best_before datetime  NOT NULL  ,\n" +
+"        charge BIG INT  ,\n" +
+"        CONSTRAINTS someconstrain  PRIMARY KEY(id) \n" +
+")ENGINE=InnoDB DEFAULT CHARACTER SET=utf8  ;";
+        assertThat(result).isEqualToIgnoringWhitespace(expected);
+    }
 }

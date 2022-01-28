@@ -1,5 +1,4 @@
 package de.htwsaar.pluginusertest;
-import de.htwsaar.sql.imp.template.MNotSoSimple;
 /**
  *
  * @author phucluoi
@@ -7,8 +6,6 @@ import de.htwsaar.sql.imp.template.MNotSoSimple;
  */
 public class TemplateUser {
 	public void useTemplate(String dummy){
-		MNotSoSimple s = new MNotSoSimple(dummy);
-		System.out.println(s.toString());
-		
+        System.out.println("Dummy java class");
 	}
 }

@@ -6,11 +6,11 @@ import java.util.List;
 
 /**
  *
- * @author phucluoi
+ * @author Hong-Phuc Bui
  * @version Feb 3, 2013
  */
 public final class Argument {
-	private List<String> argv;
+	private final List<String> argv;
 	private String l;
 	private String d;
 	private String p;
@@ -37,7 +37,7 @@ public final class Argument {
 		argv.add(d);
 	}
 	/** 
-	 * need to check timestamp
+	 * 
 	 */
 	public String getDirectory(){
 		return d;
@@ -50,7 +50,7 @@ public final class Argument {
 	}
 	
 	/**
-	 * need to check timestamp
+	 * 
 	 */
 	public String getPackagename(){
 		return p;
@@ -78,12 +78,22 @@ public final class Argument {
 	
 	public String getFile(){
 		return f;
-	}
-	
+	}	
+    
+    /**
+     * returns a copy of argv.
+     * 
+     * @return a copy of argv.
+     */
 	public String[] getStringArgv(){
 		return argv.toArray(new String[0]);
 	}
 
+    /**
+     * returns a copy of argv.
+     * 
+     * @return a copy of argv
+     */
 	public List<String> getArgv(){
 		List<String> clone = new ArrayList<String>(argv.size());
 		for(String c : argv){

@@ -4,7 +4,7 @@
 
     <groupId>io.github.mathcoach</groupId>
     <artifactId>objectmacro-plugin-user-test</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>4.0.0</version>
     <packaging>jar</packaging>
 
     <name>objectmacro-plugin-user-test</name>
@@ -35,7 +35,7 @@
             <plugin>
                 <groupId>io.github.mathcoach</groupId>
                 <artifactId>objectmacro-maven-plugin</artifactId>
-                <version>4.0.0-SNAPSHOT</version>
+                <version>4.0.0</version>
 
                 <configuration>
                     <!-- by default code will be generated

@@ -2,53 +2,53 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.htwsaar.mc</groupId>
+    <groupId>io.github.mathcoach</groupId>
     <artifactId>objectmacro-plugin-user-test</artifactId>
-    <version>3.1.0-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>objectmacro-plugin-user-test</name>
-	
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gensource.dir>${basedir}/target/generated-sources</gensource.dir>
-	
+
         <!--maven variable which points to your local repository -->
         <internal.repo.path>file:///tmp/mvn-repo/</internal.repo.path>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        
+
     </properties>
-	
+
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
             <name>Internal Repository</name>
             <url>${internal.repo.path}</url>
         </repository>
-    </distributionManagement>	
+    </distributionManagement>
 
 
     <build>
         <plugins>
             <plugin>
-                <groupId>de.htwsaar.mc</groupId>
+                <groupId>io.github.mathcoach</groupId>
                 <artifactId>objectmacro-maven-plugin</artifactId>
-                <version>3.1.0-SNAPSHOT</version>
-				
+                <version>4.0.0-SNAPSHOT</version>
+
                 <configuration>
-                    <!-- by default code will be generated 
+                    <!-- by default code will be generated
                         (the option -g)
                     -->
                     <generateCode>true</generateCode>
-                    <!-- and the plugin uses the the option strict 
+                    <!-- and the plugin uses the the option strict
                         (the option -s  of objectmacro).
                     -->
                     <strict>true</strict>
-                    <!-- All generated file will be saved in this folder  
-                        (the option -d directory). 
-                        
+                    <!-- All generated file will be saved in this folder
+                        (the option -d directory).
+
                         The default value is
                         ${basedir}/target/generated-sources/objectmacro
                     -->
@@ -63,7 +63,7 @@
                 <executions>
                     <execution>
                         <id>simple-scala-de.htwde-objectmacro</id>
-                        <!-- ================================================== 
+                        <!-- ==================================================
                             you can define particular options for each template
                             file if you need. These option override the options
                             defined above.
@@ -76,13 +76,13 @@
                         </configuration>
                         <!-- ===================================================
                             the plugin provides only one goal: objectmacro. This
-                            goal is called in the generate-sources phase. 
+                            goal is called in the generate-sources phase.
                         =================================================== -->
                         <goals>
                             <goal>objectmacro</goal>
                         </goals>
                     </execution>
-					
+
                     <execution>
                         <id>notsosimple</id>
                         <configuration>
@@ -110,10 +110,24 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
             </plugin>
-        </plugins>	  
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
-    <dependencies>		
+    <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -127,8 +141,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
-    
+
+
     <reporting>
         <plugins>
             <plugin>
@@ -142,10 +156,10 @@
                 <version>3.0.0</version>
                 <reportSets>
                     <reportSet>
-                        <!-- Don't do anything here -->                        
+                        <!-- Don't do anything here -->
                     </reportSet>
                 </reportSets>
             </plugin>
         </plugins>
-    </reporting>    
+    </reporting>
 </project>

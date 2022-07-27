@@ -7,8 +7,8 @@ Plugin to call objectmacro (see http://sablecc.org) within a maven project
 ## Usage ##
 
 
-The directory `objectmacro-plugin-user-test` has some demostartion about usage of 
-this plugin (for user: pls. see the file `pom.xml`: 
+The directory `objectmacro-plugin-user-test` has some demostartion about usage of
+this plugin (for user: pls. see the file `pom.xml`:
 https://bayes.htwsaar.de/gitblit/summary/?r=java-tools/objectmacro-maven-plugin-metapom.git ).
 
 Objectmacro document can be found here: http://downloads.sourceforge.net/sablecc/sablecc-4-beta.4.zip
@@ -16,6 +16,9 @@ Objectmacro document can be found here: http://downloads.sourceforge.net/sablecc
 
 ## New Feature ##
 
+* Version 4.0
+    * Use `io.github.mathcoach` as group id, keep Java package as before
+    * sign artifact before deploy
 
 * Version 3.0
     * Cleanup code
@@ -25,7 +28,7 @@ Objectmacro document can be found here: http://downloads.sourceforge.net/sablecc
 * Version 2.1
 
 	* check timestamp to save compile time
-	
+
 
 
 

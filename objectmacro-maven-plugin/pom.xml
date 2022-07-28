@@ -10,6 +10,23 @@
     </description>
     <packaging>maven-plugin</packaging>
 
+    <name>objectmacro-maven-plugin</name>
+    <url>
+        https://github.com/mathcoach/objectmacro-maven-plugin-metapom
+    </url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/mathcoach/objectmacro-maven-plugin-metapom</url>
+    </scm>
+
+
     <developers>
         <developer>
             <name>Hong Phuc Bui</name>
@@ -17,8 +34,8 @@
         </developer>
     </developers>
 
-    <name>objectmacro-maven-plugin</name>
-    <url>https://mathcoach.htwsaar.de/</url>
+
+
 
     <prerequisites>
         <maven>3.0+</maven>
@@ -33,16 +50,15 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <plugin.plugin.version>3.3</plugin.plugin.version>
     </properties>
+
     <distributionManagement>
         <repository>
-            <id>central</id>
-            <name>newton-releases</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-releases/</url>
+            <id>${useServer}</id>
+            <url>${releaseRepoUrl}</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
-            <name>newton-snapshots</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-snapshots/</url>
+            <id>${useServer}</id>
+            <url>${snapshotRepoUrl}</url>
         </snapshotRepository>
     </distributionManagement>
 

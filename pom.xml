@@ -12,6 +12,32 @@
     <name>objectmacro-maven-plugin-metapom</name>
     <packaging>pom</packaging>
 
+    <description>
+        Maven Meta Project, containts Plugin to generate source from objectmacro files and a
+        simple project to test.
+    </description>
+    <url>
+        https://github.com/mathcoach/objectmacro-maven-plugin-metapom
+    </url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/mathcoach/objectmacro-maven-plugin-metapom</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Hong Phuc Bui</name>
+            <email>hong-phuc.bui@htwsaar.de</email>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -20,14 +46,12 @@
 
     <distributionManagement>
         <repository>
-            <id>central</id>
-            <name>releases</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-releases/</url>
+            <id>${useServer}</id>
+            <url>${releaseRepoUrl}</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-snapshots/</url>
+            <id>${useServer}</id>
+            <url>${snapshotRepoUrl}</url>
         </snapshotRepository>
     </distributionManagement>
 

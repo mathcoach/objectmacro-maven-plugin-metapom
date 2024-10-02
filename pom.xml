@@ -28,6 +28,8 @@
     </licenses>
 
     <scm>
+        <connection>scm:git:git://github.com/mathcoach/objectmacro-maven-plugin-metapom.git</connection>
+        <developerConnection>scm:git:ssh://mathcoach/objectmacro-maven-plugin-metapom.git</developerConnection>
         <url>https://github.com/mathcoach/objectmacro-maven-plugin-metapom</url>
     </scm>
 
@@ -68,6 +70,11 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.7.1</version>
                 </plugin>
@@ -84,6 +91,36 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>                
+                <configuration>
+                    <additionalOptions>-Xdoclint:none -html5</additionalOptions>
+                    <source>8</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
